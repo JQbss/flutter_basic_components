@@ -9,7 +9,7 @@ class ChangeLanguage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => SettingsViewModel(),
+      create: (context) => SettingsViewModel(context: context),
       child: Builder(
         builder: (context){
           SettingsViewModel settingsViewModel = Provider.of<SettingsViewModel>(context);

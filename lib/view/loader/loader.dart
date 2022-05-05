@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic_components/provider/change_language_provider.dart';
+import 'package:flutter_basic_components/provider/theme_provider.dart';
 import 'package:flutter_basic_components/view/general/general.dart';
 import 'package:flutter_basic_components/view/loader/splashscreen/splashscreen.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,8 @@ class Loader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
-      ChangeNotifierProvider<ChangeLanguageProvider>(create: (context) => ChangeLanguageProvider())
+      ChangeNotifierProvider<ChangeLanguageProvider>(create: (context) => ChangeLanguageProvider()),
+      ChangeNotifierProvider<ThemeProvider>(create: (context) => ThemeProvider()),
     ],
     child: Builder(
       builder: (context){
@@ -22,7 +24,7 @@ class Loader extends StatelessWidget {
           supportedLocales: AppLocalizations.supportedLocales,
           initialRoute: '/',
           routes: {
-            '/home': (context) => const General(),
+            '/general': (context) => const General(),
           },
           home: const Splashscreen(),
         );

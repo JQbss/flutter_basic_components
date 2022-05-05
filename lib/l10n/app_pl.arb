@@ -2,5 +2,8 @@
   "loading": "Ładowanie...",
   "home": "home",
   "settings" : "ustawienia",
-  "changeLanguage" : "Zmień język"
+  "changeLanguage" : "Zmień język",
+  "changeTheme" : "Zmień kolor",
+  "light": "jasny",
+  "dark": "ciemny"
 }

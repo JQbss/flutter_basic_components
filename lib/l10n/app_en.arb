@@ -2,5 +2,8 @@
   "loading": "Loading...",
   "home": "home",
   "settings" : "settings",
-  "changeLanguage" : "Change language"
+  "changeLanguage" : "Change language",
+  "changeTheme" : "Change theme",
+  "light": "light",
+  "dark": "dark"
 }
