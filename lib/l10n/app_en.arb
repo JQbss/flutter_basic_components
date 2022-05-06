@@ -4,6 +4,6 @@
   "settings" : "settings",
   "changeLanguage" : "Change language",
   "changeTheme" : "Change theme",
-  "light": "light",
-  "dark": "dark"
+  "light": "Light",
+  "dark": "Dark"
 }

@@ -9,10 +9,11 @@ class ChangeTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => SettingsViewModel(context: context),
+        create: (context) => SettingsViewModel(),
         child: Builder(
           builder: (context){
             SettingsViewModel settingsViewModel = Provider.of<SettingsViewModel>(context);
+            settingsViewModel.setColorsLanguages(context);
             return SafeArea(
               child: Center(
                 child: Column(

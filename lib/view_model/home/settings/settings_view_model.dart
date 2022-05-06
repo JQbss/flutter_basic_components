@@ -6,18 +6,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsViewModel with ChangeNotifier{
 
-  BuildContext context;
   PageController pageController = PageController();
   final List<DropdownMenuItem<String>>? _languages =[
     const DropdownMenuItem(child: Text("Polski"), value: "pl"),
     const DropdownMenuItem(child: Text("English"), value: "en"),
   ];
-  final List<DropdownMenuItem<Map<String,dynamic>>> _colors = [
-    DropdownMenuItem(child: Text("Jasny"), value: CustomThemes.lightColors),
-    DropdownMenuItem(child: Text("Ciemny"), value: CustomThemes.darkColors,)
+  List<DropdownMenuItem<Map<String,dynamic>>> _colors = [
+    DropdownMenuItem(child:const Text("Jasny"), value: CustomThemes.lightColors),
+    DropdownMenuItem(child: const Text("Ciemny"), value: CustomThemes.darkColors,)
   ];
 
-  SettingsViewModel({required this.context});
   String currentLanguage = ChangeLanguageProvider().currentLocale.toString();
   Map<String,dynamic> currentTheme = ThemeProvider().theme;
 
@@ -29,6 +27,12 @@ class SettingsViewModel with ChangeNotifier{
     return _colors;
   }
 
+  void setColorsLanguages(BuildContext context){
+    _colors =[
+      DropdownMenuItem(child:Text(AppLocalizations.of(context)!.light), value: CustomThemes.lightColors),
+      DropdownMenuItem(child: Text(AppLocalizations.of(context)!.dark), value: CustomThemes.darkColors,)
+    ];
+  }
   changeLanguageHandler(String? value, BuildContext context){
     currentLanguage=value!;
     context.read<ChangeLanguageProvider>().currentLocale=Locale(value);

@@ -11,7 +11,7 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => SettingsViewModel(context: context),
+      create: (context) => SettingsViewModel(),
       child: Builder(
         builder: (context) {
           SettingsViewModel settingsViewModel = Provider.of(context);
