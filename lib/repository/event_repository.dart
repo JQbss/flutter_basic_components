@@ -14,4 +14,10 @@ class EventRepository implements IEventRepository{
     return Future.value(events);
   }
 
+  @override
+  Future<void>? addEvent(Event event) {
+    _box.put(event);
+    return null;
+  }
+
 }
