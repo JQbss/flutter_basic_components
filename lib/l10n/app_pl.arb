@@ -5,5 +5,11 @@
   "changeLanguage" : "Zmień język",
   "changeTheme" : "Zmień kolor",
   "light": "Jasny",
-  "dark": "Ciemny"
+  "dark": "Ciemny",
+  "emptyNameError": "Nazwa nie może być pusta",
+  "addEvent": "dodaj event",
+  "eventName": "Nazwa eventu",
+  "eventDate": "Data eventu",
+  "eventIsNote": "Czy dodać notatkę",
+  "eventNote": "Notatka"
 }

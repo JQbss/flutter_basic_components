@@ -5,5 +5,11 @@
   "changeLanguage" : "Change language",
   "changeTheme" : "Change theme",
   "light": "Light",
-  "dark": "Dark"
+  "dark": "Dark",
+  "emptyNameError": "Name can't be empty",
+  "addEvent": "add event",
+  "eventName": "Event Name",
+  "eventDate": "Event Date",
+  "eventIsNote": "Do you want add note?",
+  "eventNote": "Note"
 }
