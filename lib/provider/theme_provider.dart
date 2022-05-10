@@ -16,9 +16,13 @@ class ThemeProvider with ChangeNotifier{
 class CustomThemes{
   static Map<String,dynamic> lightColors = {
     "defaultButton": 0xFFAFE01F,
+    "tableHeader": 0xFF98C761,
+    "headerText" : 0xFF000000
   };
 
   static Map<String,dynamic> darkColors = {
     "defaultButton":0xFF019402,
+    "tableHeader": 0xFF264700,
+    "headerText" : 0xFFFFFFFF
   };
 }

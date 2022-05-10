@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_basic_components/main.dart';
 import 'package:flutter_basic_components/model/event.dart';
 import 'package:flutter_basic_components/utils/validators.dart';
+import 'package:flutter_basic_components/view/general/event/add_event/add_event.dart';
+import 'package:flutter_basic_components/view/general/general.dart';
 
 import '../../../widgets/view_dialogs.dart';
 
@@ -22,19 +25,15 @@ class EventViewModel with ChangeNotifier{
     nameError = nameValidation(nameController.text, context);
     if(formKey.currentState!.validate()){
       Event event = Event(name: nameController.text, note: noteController.text,dateTime: dateTime);
-      objectBox.events.addEvent(event);
+      await objectBox.events.addEvent(event);
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const General()), (route) => false);
     }
     notifyListeners();
   }
 
-  loadListHandler(){
-    objectBox.events.getEvents()?.then(
-      (value) =>{
-        eventList = value,
-        notifyListeners()
-      }
-    );
-
+  loadListHandler()async{
+    eventList = await objectBox.events.getEvents()??[];
+    notifyListeners();
   }
 
   changeDateHandler(BuildContext context){
@@ -47,5 +46,12 @@ class EventViewModel with ChangeNotifier{
   noteCheckboxHandler(bool? value){
     isNote = value??false;
     notifyListeners();
+  }
+
+  navigateToAddEvent(BuildContext context){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddEvent())
+    );
   }
 }

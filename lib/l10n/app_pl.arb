@@ -11,5 +11,9 @@
   "eventName": "Nazwa eventu",
   "eventDate": "Data eventu",
   "eventIsNote": "Czy dodać notatkę",
-  "eventNote": "Notatka"
+  "eventNote": "Notatka",
+  "name" : "Nazwa",
+  "date" : "Data",
+  "note" : "Notatka",
+  "ordinal" : "lp."
 }

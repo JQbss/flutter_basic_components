@@ -11,5 +11,9 @@
   "eventName": "Event Name",
   "eventDate": "Event Date",
   "eventIsNote": "Do you want add note?",
-  "eventNote": "Note"
+  "eventNote": "Note",
+  "name" : "Name",
+  "date" : "Date",
+  "note" : "Note",
+  "ordinal" : "No."
 }
