@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basic_components/objectbox.g.dart';
 import 'package:flutter_basic_components/provider/change_language_provider.dart';
+import 'package:flutter_basic_components/provider/object_box_provider.dart';
 import 'package:flutter_basic_components/provider/theme_provider.dart';
+import 'package:flutter_basic_components/repository/object_box_repositories.dart';
 import 'package:flutter_basic_components/view/general/general.dart';
 import 'package:flutter_basic_components/view/loader/splashscreen/splashscreen.dart';
 import 'package:provider/provider.dart';
@@ -14,10 +17,19 @@ class Loader extends StatelessWidget {
     return MultiProvider(providers: [
       ChangeNotifierProvider<ChangeLanguageProvider>(create: (context) => ChangeLanguageProvider()),
       ChangeNotifierProvider<ThemeProvider>(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider<ObjectBoxProvider>(create: (context) => ObjectBoxProvider()),
     ],
     child: Builder(
       builder: (context){
         final languageProvider = Provider.of<ChangeLanguageProvider>(context);
+        final objectBoxProvider = Provider.of<ObjectBoxProvider>(context);
+
+        if(objectBoxProvider.objectBoxRepositories==null) {
+          ObjectBoxRepositories.create().then((value) =>
+          {
+            objectBoxProvider.objectBoxRepositories = value
+          });
+        }
         return MaterialApp(
           locale: languageProvider.currentLocale,
           localizationsDelegates: AppLocalizations.localizationsDelegates,

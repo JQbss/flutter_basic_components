@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_basic_components/main.dart';
 import 'package:flutter_basic_components/model/event.dart';
+import 'package:flutter_basic_components/provider/object_box_provider.dart';
 import 'package:flutter_basic_components/utils/validators.dart';
 import 'package:flutter_basic_components/view/general/event/add_event/add_event.dart';
 import 'package:flutter_basic_components/view/general/general.dart';
@@ -25,14 +24,14 @@ class EventViewModel with ChangeNotifier{
     nameError = nameValidation(nameController.text, context);
     if(formKey.currentState!.validate()){
       Event event = Event(name: nameController.text, note: noteController.text,dateTime: dateTime);
-      await objectBox.events.addEvent(event);
+      await ObjectBoxProvider().objectBoxRepositories?.events.addEvent(event);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const General()), (route) => false);
     }
     notifyListeners();
   }
 
   loadListHandler()async{
-    eventList = await objectBox.events.getEvents()??[];
+    eventList = await ObjectBoxProvider().objectBoxRepositories?.events.getEvents()??[];
     notifyListeners();
   }
 

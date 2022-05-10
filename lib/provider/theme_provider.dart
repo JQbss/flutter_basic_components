@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ThemeProvider with ChangeNotifier{
   static Map<String, dynamic> _theme = CustomThemes.lightColors;
