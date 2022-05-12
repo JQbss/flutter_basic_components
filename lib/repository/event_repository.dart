@@ -10,14 +10,18 @@ class EventRepository implements IEventRepository{
 
   @override
   Future<List<Event>>? getEvents() {
-    List<Event> events = _box.getAll();
-    return Future.value(events);
+    try {
+      List<Event> events = _box.getAll();
+      return Future.value(events);
+    }on Exception catch(_){
+      throw Exception("Loading fail");
+    }
   }
 
   @override
-  Future<void>? addEvent(Event event) {
-    _box.put(event);
-    return null;
+  Future<Event>? addEvent(Event event) async {
+    await _box.putAsync(event);
+    return event;
   }
 
 }

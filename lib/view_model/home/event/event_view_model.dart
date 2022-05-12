@@ -20,8 +20,9 @@ class EventViewModel with ChangeNotifier{
   EventViewModel(){
     loadListHandler();
   }
+
   addEventHandler(BuildContext context) async {
-    nameError = nameValidation(nameController.text, context);
+    nameError = Validators.nameValidation(nameController.text, context);
     if(formKey.currentState!.validate()){
       Event event = Event(name: nameController.text, note: noteController.text,dateTime: dateTime);
       await ObjectBoxProvider().objectBoxRepositories?.events.addEvent(event);
