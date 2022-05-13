@@ -6,7 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsViewModel with ChangeNotifier{
 
-  PageController pageController = PageController();
+  final PageController _pageController = PageController(initialPage: 0, keepPage: false);
   final List<DropdownMenuItem<String>>? _languages =[
     const DropdownMenuItem(child: Text("Polski"), value: "pl"),
     const DropdownMenuItem(child: Text("English"), value: "en"),
@@ -25,6 +25,10 @@ class SettingsViewModel with ChangeNotifier{
 
   List<DropdownMenuItem<Map<String,dynamic>>> get colors{
     return _colors;
+  }
+
+  PageController get pageController{
+    return _pageController;
   }
 
   void setColorsLanguages(BuildContext context){

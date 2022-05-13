@@ -20,6 +20,7 @@ class ChangeTheme extends StatelessWidget {
                   children: [
                     Text(AppLocalizations.of(context)!.changeTheme),
                     DropdownButton(
+                      key: const Key("dropdownButton"),
                       value: settingsViewModel.currentTheme,
                       items: settingsViewModel.colors,
                       onChanged: (Map<String,dynamic>? value) => {settingsViewModel.changeColorHandler(value, context)},

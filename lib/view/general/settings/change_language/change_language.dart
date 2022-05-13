@@ -19,6 +19,7 @@ class ChangeLanguage extends StatelessWidget {
                 children: [
                   Text(AppLocalizations.of(context)!.changeLanguage),
                   DropdownButton(
+                    key: const Key('dropdownButton'),
                     value: settingsViewModel.currentLanguage,
                     items: settingsViewModel.languages,
                     onChanged: (String? value) => {settingsViewModel.changeLanguageHandler(value, context)}

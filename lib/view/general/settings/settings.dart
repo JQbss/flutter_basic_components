@@ -15,7 +15,6 @@ class Settings extends StatelessWidget {
       child: Builder(
         builder: (context) {
           SettingsViewModel settingsViewModel = Provider.of(context);
-          settingsViewModel.pageController = PageController(initialPage: 0, keepPage: false);
           return WillPopScope(
             onWillPop: () async{
               settingsViewModel.pageController.jumpToPage(0);
@@ -24,7 +23,7 @@ class Settings extends StatelessWidget {
             child: Scaffold(
               body: PageView(
                 controller: settingsViewModel.pageController,
-                children: [
+                children: const [
                   SettingsMain(),
                   ChangeLanguage(),
                   ChangeTheme(),

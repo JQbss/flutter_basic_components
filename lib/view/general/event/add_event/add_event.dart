@@ -25,6 +25,7 @@ class AddEvent extends StatelessWidget {
                     children: [
                       Text(AppLocalizations.of(context)!.eventName),
                       TextFormField(
+                        key: const Key("eventNameField"),
                         controller: eventViewModel.nameController,
                         validator: (String? item){
                           return eventViewModel.nameError;
@@ -34,8 +35,9 @@ class AddEvent extends StatelessWidget {
                         children: [
                           Text(AppLocalizations.of(context)!.eventDate),
                           CupertinoButton(
-                              child: Text('${eventViewModel.dateTime.hour}:${eventViewModel.dateTime.minute} ${eventViewModel.dateTime.day}-${eventViewModel.dateTime.month}-${eventViewModel.dateTime.year} '),
-                              onPressed: ()=>{eventViewModel.changeDateHandler(context)}
+                            key: const Key("dateSelect"),
+                            child: Text('${eventViewModel.dateTime.hour}:${eventViewModel.dateTime.minute} ${eventViewModel.dateTime.day}-${eventViewModel.dateTime.month}-${eventViewModel.dateTime.year} '),
+                            onPressed: ()=>{eventViewModel.changeDateHandler(context)}
                           ),
                         ],
                       ),
@@ -49,8 +51,9 @@ class AddEvent extends StatelessWidget {
                         ],
                       ),
                       eventViewModel.isNote?Text(AppLocalizations.of(context)!.eventNote):Container(),
-                      eventViewModel.isNote?TextFormField(controller: eventViewModel.noteController):Container(),
+                      eventViewModel.isNote?TextFormField(key:const Key("noteField"),controller: eventViewModel.noteController):Container(),
                       ElevatedButton(
+                        key: const Key("saveEventButton"),
                         onPressed: ()=>{eventViewModel.addEventHandler(context)},
                         child: Text(AppLocalizations.of(context)!.addEvent),
                       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basic_components/provider/change_language_provider.dart';
 import 'package:flutter_basic_components/provider/object_box_provider.dart';
+import 'package:flutter_basic_components/provider/theme_provider.dart';
 import 'package:flutter_basic_components/repository/object_box_repositories.dart';
 import 'package:flutter_basic_components/view/general/general.dart';
 import 'package:flutter_basic_components/view/loader/splashscreen/splashscreen.dart';
@@ -14,6 +15,8 @@ class Loader extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
       ChangeNotifierProvider<ChangeLanguageProvider>(create: (context) => ChangeLanguageProvider()),
+      ChangeNotifierProvider<ThemeProvider>(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider<ObjectBoxProvider>(create: (context) => ObjectBoxProvider()),
     ],
     child: Builder(
       builder: (context){
