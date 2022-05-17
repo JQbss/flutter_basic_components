@@ -18,29 +18,29 @@ class Loader extends StatelessWidget {
       ChangeNotifierProvider<ThemeProvider>(create: (context) => ThemeProvider()),
       ChangeNotifierProvider<ObjectBoxProvider>(create: (context) => ObjectBoxProvider()),
     ],
-    child: Builder(
-      builder: (context){
-        final languageProvider = Provider.of<ChangeLanguageProvider>(context);
-        final objectBoxProvider = Provider.of<ObjectBoxProvider>(context);
+      child: Builder(
+        builder: (context){
+          final languageProvider = Provider.of<ChangeLanguageProvider>(context);
+          final objectBoxProvider = Provider.of<ObjectBoxProvider>(context);
 
-        if(objectBoxProvider.objectBoxRepositories==null) {
-          ObjectBoxRepositories.create().then((value) =>
-          {
-            objectBoxProvider.objectBoxRepositories = value
-          });
-        }
-        return MaterialApp(
-          locale: languageProvider.currentLocale,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          initialRoute: '/',
-          routes: {
-            '/general': (context) => const General(),
-          },
-          home: const Splashscreen(),
-        );
-      },
-    ),
+          if(objectBoxProvider.objectBoxRepositories==null) {
+            ObjectBoxRepositories.create(null).then((value) =>
+            {
+              objectBoxProvider.objectBoxRepositories = value
+            });
+          }
+          return MaterialApp(
+            locale: languageProvider.currentLocale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            initialRoute: '/',
+            routes: {
+              '/general': (context) => const General(),
+            },
+            home: const Splashscreen(),
+          );
+        },
+      ),
     );
   }
 }

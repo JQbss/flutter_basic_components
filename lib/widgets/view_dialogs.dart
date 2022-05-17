@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 DateTime dateTime = DateTime.now();
 
@@ -14,6 +13,7 @@ class ViewDialogs{
           height: 220,
           color: CupertinoColors.systemBackground.resolveFrom(context),
           child: CupertinoDatePicker(
+            key: const Key("datePicker"),
             mode: CupertinoDatePickerMode.dateAndTime,
             use24hFormat: true,
             onDateTimeChanged: (newDateTime) =>

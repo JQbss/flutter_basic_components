@@ -8,7 +8,7 @@ import 'package:flutter_basic_components/view/general/general.dart';
 import '../../../widgets/view_dialogs.dart';
 
 class EventViewModel with ChangeNotifier{
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   DateTime dateTime = DateTime.now();
   final TextEditingController noteController = TextEditingController();

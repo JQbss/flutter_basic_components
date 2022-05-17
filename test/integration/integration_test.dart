@@ -183,14 +183,12 @@ void main(){
 
     testWidgets('Test add event', (WidgetTester tester) async{
       late EventViewModel eventViewModel;
-      late BuildContext buildContext;
       await tester.pumpWidget(
           widgetHomeTest(
               ChangeNotifierProvider(
                 create: (context) => EventViewModel(),
                 child: Builder(
                     builder: (context) {
-                      buildContext=context;
                       eventViewModel = Provider.of<EventViewModel>(context);
                       return const SafeArea(child: AddEvent());
                     }
@@ -198,10 +196,15 @@ void main(){
               )
           )
       );
-      print(eventViewModel.formKey.currentState);
+
+      final formFinder = find.byType(Form);
+      Form formWidget = tester.widget(formFinder);
+      eventViewModel.formKey=formWidget.key as GlobalKey<FormState>;
+
+
       expect(find.byKey(const Key("eventNameField")), findsOneWidget);
-      await tester.enterText(find.byKey(const Key("eventNameField")), "").then((value) => {
-        eventViewModel.nameController.text=""
+      await tester.enterText(find.byKey(const Key("eventNameField")), "test@test.pl").then((value) => {
+        eventViewModel.nameController.text="test@test.pl"
       });
       expect(find.byKey(const Key("noteField")), findsOneWidget);
       await tester.enterText(find.byKey(const Key("noteField")), "testNote").then((value) => {
@@ -210,14 +213,39 @@ void main(){
       expect(find.byKey(const Key("dateSelect")), findsOneWidget);
 
       await tester.tap(find.byKey(const Key("saveEventButton")));
-
-      final form = find.byType(Form);
-      print(form);
-     /* await tester.pumpAndSettle().then((value) {
-
-        eventViewModel.addEventHandler(buildContext);
-      });*/
+      expect(eventViewModel.formKey.currentState!.validate(), isTrue);
     });
 
+    testWidgets('Test other functions in Event View Model',  (WidgetTester tester) async{
+      late EventViewModel eventViewModel;
+      late BuildContext buildContext;
+      await tester.pumpWidget(
+          widgetHomeTest(
+              ChangeNotifierProvider(
+                create: (context) => EventViewModel(),
+                child: Builder(
+                    builder: (context) {
+                      eventViewModel = Provider.of<EventViewModel>(context);
+                      buildContext = context;
+                      return const SafeArea(child: AddEvent());
+                    }
+                ),
+              )
+          )
+      );
+      expect(find.byKey(const Key("checkBox")), findsOneWidget);
+      expect(eventViewModel.isNote,isTrue);
+      await tester.tap(find.byKey(const Key("checkBox"))).then((value) => {
+        eventViewModel.noteCheckboxHandler(!eventViewModel.isNote)
+      });
+      expect(eventViewModel.isNote,isFalse);
+
+      expect(find.byKey(const Key("dateSelect")), findsOneWidget);
+      await tester.tap(find.byKey(const Key("dateSelect"))).then((value) => {
+        eventViewModel.changeDateHandler(buildContext)
+      });
+      await tester.pump();
+      expect(find.byKey(const Key("datePicker")).first,findsOneWidget);
+    });
   });
 }

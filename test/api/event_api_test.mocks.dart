@@ -59,6 +59,10 @@ class MockEventViewModelTest extends _i2.Mock
               returnValue: _FakeGlobalKey_0<_i1.FormState>())
           as _i1.GlobalKey<_i1.FormState>);
   @override
+  set formKey(_i1.GlobalKey<_i1.FormState>? _formKey) =>
+      super.noSuchMethod(Invocation.setter(#formKey, _formKey),
+          returnValueForMissingStub: null);
+  @override
   _i1.TextEditingController get nameController =>
       (super.noSuchMethod(Invocation.getter(#nameController),
               returnValue: _FakeTextEditingController_1())

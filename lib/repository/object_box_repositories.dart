@@ -7,8 +7,8 @@ class ObjectBoxRepositories implements IDatabaseRepositories{
   @override
   final EventRepository events;
 
-  static Future<ObjectBoxRepositories> create() async =>
-      ObjectBoxRepositories._(await openStore());
+  static Future<ObjectBoxRepositories> create(String? path) async =>
+      ObjectBoxRepositories._(await openStore(directory: path));
 
   ObjectBoxRepositories._(this._store) : events = EventRepository(_store);
 

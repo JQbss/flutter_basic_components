@@ -44,8 +44,9 @@ class AddEvent extends StatelessWidget {
                       Row(
                         children: [
                           Checkbox(
-                              value: eventViewModel.isNote,
-                              onChanged: eventViewModel.noteCheckboxHandler,
+                            key: const Key("checkBox"),
+                            value: eventViewModel.isNote,
+                            onChanged: eventViewModel.noteCheckboxHandler,
                           ),
                           Text(AppLocalizations.of(context)!.eventIsNote),
                         ],
