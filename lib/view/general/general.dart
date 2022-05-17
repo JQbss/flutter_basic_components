@@ -10,29 +10,36 @@ class General extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => GeneralViewModel(),
-      child: Builder(
-        builder: (context) {
-          GeneralViewModel generalViewModel = Provider.of<GeneralViewModel>(context);
-          return Scaffold(
-            body: generalViewModel.getWidget(),
-            bottomNavigationBar: BottomNavigationBar(
-              items: [
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.home),
-                  label: AppLocalizations.of(context)!.home,
-                  backgroundColor: Colors.red,
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.settings),
-                  label: AppLocalizations.of(context)!.settings,
-                  backgroundColor: Colors.blue,
-                ),
-              ],
-              currentIndex: generalViewModel.selectedIndex,
-              onTap: (int index)=>{generalViewModel.selectedIndex=index},
-            ),
-          );
-        }
+      child: SafeArea(
+        child: Builder(
+          builder: (context) {
+            GeneralViewModel generalViewModel = Provider.of<GeneralViewModel>(context);
+            return Scaffold(
+              body: generalViewModel.getWidget(),
+              bottomNavigationBar: BottomNavigationBar(
+                items: [
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.home),
+                    label: AppLocalizations.of(context)!.home,
+                    backgroundColor: Colors.red,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.animation),
+                    label: AppLocalizations.of(context)!.animation,
+                    backgroundColor: Colors.blue,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.settings),
+                    label: AppLocalizations.of(context)!.settings,
+                    backgroundColor: Colors.blue,
+                  ),
+                ],
+                currentIndex: generalViewModel.selectedIndex,
+                onTap: (int index)=>{generalViewModel.selectedIndex=index},
+              ),
+            );
+          }
+        ),
       ),
     );
   }

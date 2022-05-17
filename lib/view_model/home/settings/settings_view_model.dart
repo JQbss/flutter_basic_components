@@ -37,9 +37,13 @@ class SettingsViewModel with ChangeNotifier{
       DropdownMenuItem(child: Text(AppLocalizations.of(context)!.dark), value: CustomThemes.darkColors,)
     ];
   }
-  changeLanguageHandler(String? value, BuildContext context){
+
+  void setCurrentLanguage(ChangeLanguageProvider languageProvider){
+    currentLanguage=languageProvider.currentLocale.toString();
+  }
+  changeLanguageHandler(String? value, ChangeLanguageProvider languageProvider){
     currentLanguage=value!;
-    context.read<ChangeLanguageProvider>().currentLocale=Locale(value);
+    languageProvider.currentLocale=Locale(value);
     notifyListeners();
   }
 

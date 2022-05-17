@@ -151,14 +151,12 @@ void main(){
 
     testWidgets('Test change language', (WidgetTester tester) async{
       late SettingsViewModel settingsViewModel;
-      late BuildContext buildContext;
       await tester.pumpWidget(
           widgetHomeTest(
               ChangeNotifierProvider(
                 create: (context)=> SettingsViewModel(),
                 child: Builder(
                     builder: (context) {
-                      buildContext=context;
                       settingsViewModel = Provider.of<SettingsViewModel>(context);
                       return const SafeArea(child: ChangeLanguage());
                     }
@@ -173,9 +171,6 @@ void main(){
 
       final dropdownItem = find.text('English').last;
       await tester.tap(dropdownItem);
-      await tester.pumpAndSettle().then((_) {
-        settingsViewModel.changeLanguageHandler("en", buildContext);
-      });
 
       expect(settingsViewModel.currentLanguage, "en");
 

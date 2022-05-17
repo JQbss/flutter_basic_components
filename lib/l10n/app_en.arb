@@ -15,5 +15,8 @@
   "name" : "Name",
   "date" : "Date",
   "note" : "Note",
-  "ordinal" : "No."
+  "ordinal" : "No.",
+  "animation" : "animation",
+  "changeMargin" : "Change margin",
+  "changeWidth" : "Change width"
 }

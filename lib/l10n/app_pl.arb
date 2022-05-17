@@ -15,5 +15,8 @@
   "name" : "Nazwa",
   "date" : "Data",
   "note" : "Notatka",
-  "ordinal" : "lp."
+  "ordinal" : "lp.",
+  "animation" : "animacje",
+  "changeMargin" : "Zmień margines",
+  "changeWidth" : "Zmień szerokość"
 }
